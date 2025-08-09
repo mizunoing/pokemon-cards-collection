@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ポケモンカード一覧</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background-color: #f0f8ff;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .search-box {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .search-box input {
+      padding: 10px;
+      width: 80%;
+      max-width: 400px;
+      font-size: 16px;
+    }
+    .card-page {
+      margin-bottom: 40px;
+    }
+    .card-page img {
+      width: 100%;
+      max-width: 800px;
+      display: block;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    .card-page h2 {
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>ポケモンカード交換用ファイル</h1>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="ポケモンの名前を入力...">
+  </div>
+
+  <div id="cardPages">
+    <div class="card-page" data-name="ピカチュウ">
+      <h2>ページ1：ピカチュウ</h2>
+      <img src="images/page1.jpg" alt="ページ1">
+    </div>
+
+    <div class="card-page" data-name="リザードン">
+      <h2>ページ2：リザードン</h2>
+      <img src="images/page2.jpg" alt="ページ2">
+    </div>
+
+    <div class="card-page" data-name="ミュウツー">
+      <h2>ページ3：ミュウツー</h2>
+      <img src="images/page3.jpg" alt="ページ3">
+    </div>
+
+    <!-- 必要なだけ追加してください -->
+
+  </div>
+
+  <script>
+    const searchInput = document.getElementById("searchInput");
+    const cardPages = document.querySelectorAll(".card-page");
+
+    searchInput.addEventListener("input", () => {
+      const keyword = searchInput.value.trim().toLowerCase();
+
+      cardPages.forEach(page => {
+        const name = page.dataset.name.toLowerCase();
+        if (name.includes(keyword) || keyword === "") {
+          page.style.display = "block";
+        } else {
+          page.style.display = "none";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
