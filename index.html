@@ -68,23 +68,44 @@
 
   </div>
 
-  <!-- ▼ Auto-generate pages 4–68 (inserted) -->
-  <script>
-    (function () {
-      const container = document.getElementById("cardPages");
-      for (let i = 4; i <= 68; i++) {
-        const div = document.createElement("div");
-        div.className = "card-page";
-        // You can later replace this with real Pokémon names, e.g., "pikachu ピカチュウ"
-        div.dataset.name = `page ${i}`;
-        div.innerHTML = `
-          <h2>Page ${i}</h2>
-          <img src="images/page${i}.jpg" alt="Page ${i}">
-        `;
-        container.appendChild(div);
-      }
-    })();
-  </script>
+  <!-- ▼ 4〜68ページを名前付きで自動生成 -->
+<script>
+  (function () {
+    const container = document.getElementById("cardPages");
+
+    // ページ番号ごとの名前設定（英語、日本語、別名など）
+    const names = {
+      4: "Eevee イーブイ",
+      5: "Snorlax カビゴン",
+      6: "Mew ミュウ",
+      7: "Lapras ラプラス",
+      8: "Gengar ゲンガー",
+      9: "Lucario ルカリオ",
+      10: "Garchomp ガブリアス",
+      // ... 必要に応じて68まで書き足してください
+      // 例：
+      // 11: "Charmander ヒトカゲ",
+      // 12: "Bulbasaur フシギダネ",
+    };
+
+    for (let i = 4; i <= 68; i++) {
+      const div = document.createElement("div");
+      div.className = "card-page";
+
+      const pageName = names[i] || ""; // 名前が未設定なら空欄
+      // 検索用（英語、日本語、ページ番号全部入れる）
+      div.dataset.name = `${pageName} Page ${i}`.trim();
+
+      div.innerHTML = `
+        <h2>Page ${i}${pageName ? `: ${pageName}` : ""}</h2>
+        <img src="images/page${i}.jpg" alt="Page ${i}">
+      `;
+      container.appendChild(div);
+    }
+  })();
+</script>
+<!-- ▲ ここまで -->
+
 
   <script>
     const searchInput = document.getElementById("searchInput");
