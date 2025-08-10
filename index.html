@@ -45,28 +45,46 @@
   <h1>ポケモンカード交換用ファイル</h1>
 
   <div class="search-box">
-    <input type="text" id="searchInput" placeholder="Enter the name of the Pokemon...">
+    <input type="text" id="searchInput" placeholder="ポケモンの名前を入力...">
   </div>
 
   <div id="cardPages">
     <div class="card-page" data-name="ピカチュウ">
-      <h2>page1：ピカチュウ</h2>
-      <img src="images/page1.jpg" alt="page1">
+      <h2>ページ1：ピカチュウ</h2>
+      <img src="images/page1.jpg" alt="ページ1">
     </div>
 
     <div class="card-page" data-name="リザードン">
-      <h2>page2：リザードン</h2>
-      <img src="images/page2.jpg" alt="page2">
+      <h2>ページ2：リザードン</h2>
+      <img src="images/page2.jpg" alt="ページ2">
     </div>
 
     <div class="card-page" data-name="ミュウツー">
-      <h2>page3：ミュウツー</h2>
-      <img src="images/page3.jpg" alt="page3">
+      <h2>ページ3：ミュウツー</h2>
+      <img src="images/page3.jpg" alt="ページ3">
     </div>
 
     <!-- 必要なだけ追加してください -->
 
   </div>
+
+  <!-- ▼ Auto-generate pages 4–68 (inserted) -->
+  <script>
+    (function () {
+      const container = document.getElementById("cardPages");
+      for (let i = 4; i <= 68; i++) {
+        const div = document.createElement("div");
+        div.className = "card-page";
+        // You can later replace this with real Pokémon names, e.g., "pikachu ピカチュウ"
+        div.dataset.name = `page ${i}`;
+        div.innerHTML = `
+          <h2>Page ${i}</h2>
+          <img src="images/page${i}.jpg" alt="Page ${i}">
+        `;
+        container.appendChild(div);
+      }
+    })();
+  </script>
 
   <script>
     const searchInput = document.getElementById("searchInput");
